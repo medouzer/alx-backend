@@ -45,11 +45,12 @@ class Server:
         next_index = min(index + page_size, len(all_data))
         data = []
         current_index = index
-        collected_items = 0  
+        collected_items = 0
         while collected_items < page_size and current_index < len(all_data):
             if current_index in all_data:
                 data.append(all_data[current_index])
                 collected_items += 1
             current_index += 1
         next_index = current_index if current_index < len(all_data) else None
-        return {'index': index, 'data': data, 'page_size': page_size, 'next_index': next_index}
+        return {'index': index, 'data': data,
+                'page_size': page_size, 'next_index': next_index}
