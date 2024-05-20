@@ -41,6 +41,7 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         all_data = self.indexed_dataset()
+        index = 0 if index is None else index
         assert index >= 0 and index < len(all_data)
         next_index = min(index + page_size, len(all_data))
         data = []
