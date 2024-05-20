@@ -11,6 +11,7 @@ def index_range(page, page_size) -> Tuple[int, int]:
     total = page * page_size
     return (total - page_size, total)
 
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -30,7 +31,6 @@ class Server:
 
         return self.__dataset
 
-
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """method get_page"""
         assert type(page) == int and type(page_size) == int
@@ -38,7 +38,7 @@ class Server:
         indexes = index_range(page, page_size)
         all_list = self.dataset()
         return all_list[indexes[0]:indexes[1]]
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """method get_hyper"""
         data = self.get_page(page, page_size)

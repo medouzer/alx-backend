@@ -10,6 +10,7 @@ def index_range(page, page_size) -> Tuple[int, int]:
     total = page * page_size
     return (total - page_size, total)
 
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -19,8 +20,7 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset
-        """
+        """Cached dataset"""
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
@@ -28,7 +28,6 @@ class Server:
             self.__dataset = dataset[1:]
 
         return self.__dataset
-
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """method get_page"""
