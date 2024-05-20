@@ -54,4 +54,5 @@ class Server:
             prev_page = None
         total_pages = math.ceil(total_data / page_size)
         return {'page_size': page_size, 'page': page, 'data': data,
-                'next_page': next_page, 'prev_page': prev_page, 'total_pages': int(total_pages)}
+                'next_page': next_page, 'prev_page': prev_page,
+                'total_pages': int(total_pages)}
