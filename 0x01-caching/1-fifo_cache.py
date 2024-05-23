@@ -4,9 +4,10 @@
 from collections import OrderedDict
 BaseCaching = __import__('base_caching').BaseCaching
 
+
 class FIFOCache(BaseCaching):
     """class FIFOCache"""
-    
+
     def __init__(self):
         """Initialize the cache"""
         super().__init__()
@@ -16,7 +17,7 @@ class FIFOCache(BaseCaching):
         """ Add an item in the cache"""
         if key is None and item is None:
             return
-        
+
         if key in self.cache_data:
             self.cache_data.pop(key)
 
@@ -24,7 +25,7 @@ class FIFOCache(BaseCaching):
             re_key, re_value = self.cache_data.popitem(last=False)
             print(f"DISCARD: {re_key}")
         self.cache_data[key] = item
-    
+
     def get(self, key):
         """ Get an item by key"""
         if key is None or key not in self.cache_data:

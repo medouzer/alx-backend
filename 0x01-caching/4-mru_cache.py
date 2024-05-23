@@ -4,6 +4,7 @@
 from collections import OrderedDict
 BaseCaching = __import__('base_caching').BaseCaching
 
+
 class MRUCache(BaseCaching):
     """class MRUCache"""
     def __init__(self):
@@ -15,7 +16,7 @@ class MRUCache(BaseCaching):
         """ Add an item in the cache"""
         if key is None and item is None:
             return
-        
+
         if key in self.cache_data:
             self.cache_data.pop(key)
 
@@ -24,7 +25,7 @@ class MRUCache(BaseCaching):
             print(f"DISCARD: {re_key}")
         self.cache_data[key] = item
         self.cache_data.move_to_end(key, last=False)
-        
+
     def get(self, key):
         """ Get an item by key"""
         if key is None or key not in self.cache_data:
