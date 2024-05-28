@@ -25,6 +25,20 @@ users = {
 }
 
 
+def get_user() -> Union[Dict, None]:
+    """method get_user"""
+    user_id = request.args.get('login_as')
+    if user_id:
+        return users.get(int(user_id))
+    return None
+
+
+@app.before_request
+def before_request() -> None:
+    """before_request method"""
+    g.user = get_user()
+
+
 @babel.localeselector
 def get_locale() -> str:
     """method get_local"""
@@ -35,20 +49,6 @@ def get_locale() -> str:
 
 
 babel.init_app(app, locale_selector=get_locale)
-
-
-def get_user() -> Union[Dict, None]:
-    """method get_user"""
-    user_id = request.args.get('login_as')
-    if user_id:
-        return users.get(int(user_id))
-    return None
-
-
-@app.before_request
-def before_request():
-    """before_request method"""
-    g.user = get_user()
 
 
 @app.route('/', strict_slashes=False)
