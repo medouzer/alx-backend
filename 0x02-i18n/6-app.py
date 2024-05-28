@@ -27,7 +27,10 @@ users = {
 
 @babel.localeselector
 def get_locale() -> str:
-    """method get_local"""
+    """
+    method get_local
+    this used to indicate the lang
+    """
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
@@ -38,7 +41,10 @@ def get_locale() -> str:
 
 
 def get_user() -> Union[Dict, None]:
-    """method get_user"""
+    """
+    method get_user
+    this method return the the user that has a user_id
+    """
     user_id = request.args.get('login_as')
     if user_id:
         return users.get(int(user_id))
@@ -47,11 +53,18 @@ def get_user() -> Union[Dict, None]:
 
 @app.before_request
 def before_request():
-    """before_request method"""
+    """
+    before_request method
+    this mean that is the first method
+    run first
+    """
     g.user = get_user()
 
 
 @app.route('/', strict_slashes=False)
 def index() -> str:
-    """return the index"""
+    """
+    return the index
+    return the route to the index
+    """
     return render_template('6-index.html')
