@@ -10,6 +10,7 @@ class Config:
     config class
     that has lang and timezone
     """
+    DEBUG = True
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -30,7 +31,6 @@ def get_locale() -> str:
 
 
 @app.route('/', strict_slashes=False)
-@app.route('/index')
 def index() -> str:
     """
     this is the route that
