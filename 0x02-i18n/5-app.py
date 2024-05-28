@@ -25,15 +25,12 @@ users = {
 }
 
 
-# @babel.localeselector
+@babel.localeselector
 def get_locale() -> str:
     """method get_local"""
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
-    # user = getattr(g, 'user', None)
-    # if user and user['locale'] in app.config['LANGUAGES']:
-    #     return user['locale']
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
