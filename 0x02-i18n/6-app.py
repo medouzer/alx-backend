@@ -42,11 +42,10 @@ babel.init_app(app, locale_selector=get_locale)
 
 def get_user() -> Union[Dict, None]:
     """method get_user"""
-    try:
-        user_id = int(request.args.get('login_as'))
-        return users.get(user_id)
-    except (TypeError, ValueError):
-        return None
+    user_id = request.args.get('login_as')
+    if user_id:
+        return users.get(int(user_id))
+    return None
 
 
 @app.before_request
@@ -58,4 +57,4 @@ def before_request():
 @app.route('/', strict_slashes=False)
 def index() -> str:
     """return the index"""
-    return render_template('5-index.html')
+    return render_template('6-index.html')
