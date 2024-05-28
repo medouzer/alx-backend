@@ -10,4 +10,5 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
+    """return the index"""
     return render_template('0-index.html')
