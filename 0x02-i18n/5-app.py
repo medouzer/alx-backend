@@ -48,10 +48,11 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-babel.init_app(app, locale_selector=get_locale)
-
-
-@app.route('/', strict_slashes=False)
+@app.route('/')
 def index() -> str:
     """return the index"""
     return render_template('5-index.html')
+
+
+if __name__ == "__main__":
+    app.run()
