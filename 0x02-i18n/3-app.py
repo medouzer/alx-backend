@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Basic Flask app"""
+"""Parametrize templates"""
 
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
 
 
 class Config:
-    """config class"""
+    """
+    config class
+    that has lang and timezone
+    """
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -19,11 +22,17 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale() -> str:
-    """method get_local"""
+    """
+    method get_local
+    this method to indicate the lang
+    """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/', strict_slashes=False)
 def index() -> str:
-    """return the index"""
+    """
+    this is the route that
+    return the index
+    """
     return render_template('3-index.html')
