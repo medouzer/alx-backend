@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''Parametrize templates'''
+"""Parametrize templates"""
 
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
@@ -30,6 +30,7 @@ def get_locale() -> str:
 
 
 @app.route('/', strict_slashes=False)
+@app.route('/index')
 def index() -> str:
     """
     this is the route that
