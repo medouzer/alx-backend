@@ -25,7 +25,7 @@ users = {
 }
 
 
-# @babel.localeselector
+@babel.localeselector
 def get_locale() -> str:
     """method get_local"""
     locale = request.args.get('locale')
@@ -55,7 +55,3 @@ def before_request():
 def index() -> str:
     """return the index"""
     return render_template('6-index.html')
-
-
-if __name__ == "__main__":
-    app.run()

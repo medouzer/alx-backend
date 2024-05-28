@@ -52,7 +52,3 @@ def get_locale() -> str:
 def index() -> str:
     """return the index"""
     return render_template('5-index.html')
-
-
-if __name__ == "__main__":
-    app.run()
